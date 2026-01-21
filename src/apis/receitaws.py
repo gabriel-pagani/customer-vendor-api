@@ -11,7 +11,7 @@ def cnpj_lookup(companyId: str, code: str, type: int, contributor: int, cnpj: st
         "type": type,
         "contributor": contributor,
 
-        "shortName": resp["fantasia"],
+        "shortName": resp["fantasia"] if resp["fantasia"] else resp["nome"],
         "name": resp["nome"],
         "mainNIF": resp["cnpj"],
         "stateRegister": None,
