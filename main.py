@@ -5,7 +5,26 @@ from requests.auth import HTTPBasicAuth
 from dotenv import load_dotenv
 
 
-def main():
+def main(
+        companyId: str,
+        code: str,
+        shortName: str,
+        name: str,
+        type: int,
+        mainNIF: str,
+        stateRegister: str,
+        zipCode: str,
+        streetType: str,
+		streetName: str,
+		number: str,
+		districtType: str,
+		district: str,
+		countryInternalId: str,
+		stateCode: str,
+		cityInternalId: str,
+		phoneNumber: str,
+		email: str
+):
     try:
         load_dotenv(override=True)
 
@@ -17,15 +36,48 @@ def main():
         session.auth = HTTPBasicAuth(api_user, api_user_pwd)
         session.headers.update({"Accept": "application/json"})
 
-        with open("example.json", "r", encoding="utf-8") as j:
-            payload = json.load(j)
-
-        resp = session.post(api_url, json=payload, timeout=30)
+        json = {
+            "companyId": companyId,
+            "code": code,
+            "companyInternalId": f"{companyId}|{code}",
+            "shortName": shortName,
+            "name": name,
+            "type": type,
+            "entityType": "J",
+            "mainNIF": mainNIF,
+            "stateRegister": stateRegister,
+            "address": {
+                "zipCode": zipCode,
+                "streetType": streetType,
+                "streetName": streetName,
+                "number": number,
+                "districtType": districtType,
+                "district": district,
+                "country": {
+                    "countryInternalId": countryInternalId
+                },
+                "state": {
+                    "stateCode": stateCode
+                },
+                "city": {
+                    "cityInternalId": cityInternalId
+                },
+                "communicationInformation": {
+                    "phoneNumber": phoneNumber,
+                    "email": email
+                }
+            },
+            "complementaryFields": {
+                "codcoligada": int(companyId),
+                "codcfo": code
+            }
+        }
+        
+        resp = session.post(api_url, json=json, timeout=30)
         resp.raise_for_status()
     
     except Exception as e:
-        print(f"status: {resp.status_code}")
-        print(f"error: {e}")
+        print(f"exception: {e}")
 
 
 if __name__ == "__main__":
