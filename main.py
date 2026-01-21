@@ -9,11 +9,11 @@ def main():
     load_dotenv(override=True)
 
     api_url = os.getenv("API_URL")
-    user = os.getenv("API_USER")
-    pwd = os.getenv("API_USER_PWD")
+    api_user = os.getenv("API_USER")
+    api_user_pwd = os.getenv("API_USER_PWD")
 
     session = requests.Session()
-    session.auth = HTTPBasicAuth(user, pwd)
+    session.auth = HTTPBasicAuth(api_user, api_user_pwd)
     session.headers.update({"Accept": "application/json"})
 
     with open("example.json", "r", encoding="utf-8") as j:
