@@ -169,6 +169,7 @@ abbreviations = {
     "S.A.": "Sa",
     "S.A": "Sa",
     "S/A": "Sa",
+    "S A": "Sa",
     "Saneamento": "San",
     "Secretaria": "Sec",
     "Segurancas": "Seg",
