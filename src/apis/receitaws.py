@@ -2,14 +2,14 @@ from utils.formatter import format_name, suffix_remover, format_zipcode, format_
 import requests
 
 
-def cnpj_lookup(coligada: str, code: str, cnpj: str, ie: str = ""):
+def cnpj_lookup(codcoligada: str, codcfo: str, cnpj: str, ie: str = ""):
     formatted_cnpj = cnpj.replace(".", "").replace("/", "").replace("-", "").strip()
     resp = requests.get(f"https://receitaws.com.br/v1/cnpj/{formatted_cnpj}").json()
     
     response = {
-        "companyId": coligada,
-        "code": code,
-        "type": 3 if code.upper().startswith('C') else 2,
+        "companyId": codcoligada,
+        "code": codcfo,
+        "type": 3 if codcfo.upper().startswith('C') else 2,
         "contributor": 2 if ie and ie.strip().lower() == "isento" else (1 if ie else 0),
 
         "shortName": suffix_remover(format_name(resp["fantasia"])) if resp["fantasia"] else suffix_remover(format_name(resp["nome"])),
