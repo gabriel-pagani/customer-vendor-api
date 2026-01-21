@@ -42,10 +42,10 @@ def create_new_customer_vendor(
             "shortName": shortName,
             "name": name,
             "type": type,
-            "entityType": "J",
+            "entityType": "J",  # Pessoa jurídica
             "mainNIF": mainNIF,
             "stateRegister": stateRegister,
-            "registerSituation": 1,
+            "registerSituation": 1,  # Ativo
             "address": {
                 "zipCode": zipCode,
                 "streetType": streetType,
@@ -69,7 +69,7 @@ def create_new_customer_vendor(
                 }
             },
             "contributor": contributor,
-            "fuelOperationType": 3,
+            "fuelOperationType": 3,  # Nenhum
             "complementaryFields": {
                 "codcoligada": int(companyId),
                 "codcfo": code
