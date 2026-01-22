@@ -4,6 +4,7 @@ from utils.formatter import (
     suffix_remover, 
     format_zipcode, 
     format_street, 
+    format_number,
     format_district, 
     format_municipality, 
     format_phone
@@ -30,7 +31,7 @@ def cnpj_lookup(codcoligada: str, codcfo: str, cnpj: str, ie: str = ""):
         "zipCode": format_zipcode(resp["cep"]),
         "streetType": format_street(resp["logradouro"])[0],
         "streetName": format_street(resp["logradouro"])[1],
-        "number": resp["numero"].upper().strip(),
+        "number": format_number(resp["numero"]),
         "districtType": format_district(resp["bairro"])[0],
         "district": format_district(resp["bairro"])[1],
         "stateCode": resp["uf"].upper().strip(),
