@@ -31,6 +31,9 @@ def create_new_customer_vendor(
         api_user = os.getenv("API_USER")
         api_user_pwd = os.getenv("API_USER_PWD")
 
+        if not api_url or not api_user or not api_user_pwd:
+            raise RuntimeError("Missing environmental variables")
+
         session = requests.Session()
         session.auth = HTTPBasicAuth(api_user, api_user_pwd)
         session.headers.update({"Accept": "application/json"})
@@ -80,4 +83,4 @@ def create_new_customer_vendor(
         resp.raise_for_status()
     
     except Exception as e:
-        print({"file": "customer_vendor.py", "exception": e})
+        raise e
