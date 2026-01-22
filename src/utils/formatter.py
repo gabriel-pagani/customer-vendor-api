@@ -87,14 +87,12 @@ def format_municipality(municipality: str, state: str) -> str:
         return ""
 
     key = municipality.upper().strip()
-    state = state.upper().strip()
-
     value = municipalities.get(key)
     if not value:
         return ""
 
     codmun, uf = value
-    return codmun if uf == state else ""
+    return codmun if uf == state.upper().strip() else ""
 
 
 def format_phone(phone: str) -> str:
