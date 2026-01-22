@@ -35,4 +35,4 @@ def cnpj_lookup(codcoligada: str, codcfo: str, cnpj: str, ie: str = ""):
         return response
     
     except Exception as e:
-        print(f"exception: {resp.get('message')}")
+        print({"file": "receitaws.py", "exception": resp.get('message')})
