@@ -5,12 +5,13 @@ import requests
 def cnpj_lookup(codcoligada: str, codcfo: str, cnpj: str, ie: str = ""):
     try:
         formatted_cnpj = cnpj.replace(".", "").replace("/", "").replace("-", "").strip()
-        
-        resp = requests.get(f"https://receitaws.com.br/v1/cnpj/{formatted_cnpj}", timeout=30).json()
-        
+        r = requests.get(f"https://receitaws.com.br/v1/cnpj/{formatted_cnpj}", timeout=30)
+        r.raise_for_status()
+        resp = r.json()
+
         if isinstance(resp, dict) and resp.get("status") == "ERROR":
-            raise Exception
-        
+            raise RuntimeError(resp.get("message"))
+
         response = {
             "companyId": codcoligada,
             "code": codcfo,
@@ -35,4 +36,4 @@ def cnpj_lookup(codcoligada: str, codcfo: str, cnpj: str, ie: str = ""):
         return response
     
     except Exception as e:
-        print({"file": "receitaws.py", "exception": resp.get('message')})
+        raise e
