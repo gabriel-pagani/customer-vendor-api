@@ -1,8 +1,9 @@
-from constants.abbreviations import abbreviations
 import re
 
 
 def format_name(name: str) -> str:
+    from constants.abbreviations import abbreviations
+    
     if not name:
         return ""
     
@@ -46,68 +47,14 @@ def format_zipcode(zipCode: str) -> str:
 
 
 def format_street(street: str) -> list:
+    from constants.streets import street_types
+
     if not street:
         return ["", ""]
     
     street = street.strip().upper()
     street_type = street.split()[0]
     
-    street_types = {
-        "ACESSO": "2",
-        "AEROPORTO": "3",
-        "ALAMEDA": "4",
-        "ATALHO": "5",
-        "AVENIDA": "6",
-        "AV": "6",
-        "BECO": "7",
-        "BOULEVARD": "8",
-        "CAMINHO": "9",
-        "CAMPO": "12",
-        "CHACARA": "10",
-        "CONJUNTO": "11",
-        "CORREDOR": "13",
-        "DESVIO": "48",
-        "ENTRONCAM.": "14",
-        "ESPLANADA": "15",
-        "ESTACAO": "17",
-        "ESTIVA": "16",
-        "ESTRADA": "18",
-        "FAZENDA": "19",
-        "FERROVIA": "20",
-        "GALERIA": "21",
-        "JARDIM": "22",
-        "LADEIRA": "23",
-        "LAGO": "24",
-        "LAGOA": "25",
-        "LARGE": "26",
-        "LOGRADOURO": "49",
-        "MARGINAL": "50",
-        "MORRO": "27",
-        "PARQUE": "28",
-        "PASSAGEM": "29",
-        "PASSEIO": "33",
-        "PORTO": "32",
-        "PRACA": "30",
-        "PRAIA": "31",
-        "RIO": "36",
-        "RODOVIA": "34",
-        "ROD": "34",
-        "RUA": "1",
-        "R": "1",
-        "RUELA": "35",
-        "SERVIDAO": "46",
-        "SITIO": "37",
-        "SUP QUADRA": "38",
-        "TRAVESSA": "39",
-        "VALE": "40",
-        "VARGEM": "45",
-        "VIA": "43",
-        "VIADUTO": "41",
-        "VIELA": "42",
-        "VILA": "44",
-        # Adicionar mais conforme necessário
-    }
-
     if street_type in street_types:
         street = re.sub(f'{street_type} ', '', street)
         street_type = street_types[street_type]
@@ -117,35 +64,14 @@ def format_street(street: str) -> list:
 
 
 def format_district(district: str) -> list:
+    from constants.districts import district_types
+    
     if not district:
         return ["", ""]
     
     district = district.strip().upper()
     district_type = district.split()[0]
     
-    district_types = {
-        "BAIRRO": "1",
-        "BOSQUE": "2",
-        "CHACARA": "3",
-        "CONJUNTO": "4",
-        "DESMEMB.": "5",
-        "DISTRITO": "6",
-        "FAVELA": "7",
-        "FAZENDA": "8",
-        "GLEBA": "9",
-        "HORTO": "10",
-        "JARDIM": "11",
-        "LOTEAMENTO": "12",
-        "NUCLEO": "13",
-        "PARQUE": "14",
-        "RESIDENC.": "15",
-        "SITIO": "16",
-        "TROPICAL": "17",
-        "VILA": "18",
-        "ZONA": "19",
-        # Adicionar mais conforme necessário
-    }
-
     if district_type in district_types:
         district = re.sub(f"{district_type} ", "", district)
         district_type = district_types[district_type]
