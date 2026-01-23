@@ -113,8 +113,8 @@ class HomeView:
             
             self.page.update()
 
-            len_customers_vendors = len(self.customers_vendors)
             customers_vendors = list(self.customers_vendors.items())
+            len_customers_vendors = len(customers_vendors)
             for cnpj, infos in customers_vendors:
                 try:
                     data = execute_query("""
