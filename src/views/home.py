@@ -60,7 +60,7 @@ class HomeView:
                 cnpj_input.error = "Esse cnpj já foi adicionado!"
                 has_error = True
 
-            if not is_valid_cnpj(cnpj_input.value):
+            if cnpj_input.value and not is_valid_cnpj(cnpj_input.value):
                 cnpj_input.error = "Cnpj inválido!"
                 has_error = True
             
