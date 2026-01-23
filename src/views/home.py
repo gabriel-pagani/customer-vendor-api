@@ -149,6 +149,10 @@ class HomeView:
                     if len_customers_vendors > 3:
                         time.sleep(20)
 
+                    if cnpj in self.customers_vendors:
+                        del self.customers_vendors[cnpj]
+                        update_list_of_cnpjs()
+
                 except Exception as e:
                     print(f"exception: {e}")
 
