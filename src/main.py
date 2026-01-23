@@ -15,6 +15,10 @@ class Main:
         
         self.page.title = 'Customer Vendor Automation'
         self.page.window.icon = os.path.join(os.path.dirname(__file__), "assets", "icon_windows.ico")
+        self.page.window.width = 1000
+        self.page.window.min_width = 1000
+        self.page.window.height = 874
+        self.page.window.min_height = 874
         self.page.run_task(center_window)
         self.page.theme_mode = ft.ThemeMode.LIGHT
         self.page.bgcolor = ft.Colors.WHITE
