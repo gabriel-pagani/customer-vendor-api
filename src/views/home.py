@@ -113,7 +113,6 @@ class HomeView:
             
             self.page.update()
 
-            len_customers_vendors = len(self.customers_vendors)
             for cnpj, infos in self.customers_vendors.items():
                 try:
                     data = execute_query("""
@@ -146,8 +145,7 @@ class HomeView:
                         contributor=resp["contributor"]
                     )
 
-                    if len_customers_vendors > 3:
-                        time.sleep(20)
+                    time.sleep(20)
 
                 except Exception as e:
                     print(f"exception: {e}")
