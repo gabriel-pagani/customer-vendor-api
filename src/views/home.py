@@ -19,13 +19,57 @@ class HomeView:
             ...
 
         # Components
-        codcoligada_input = ft.TextField()
-        cnpj_input = ft.TextField()
-        ie_input = ft.TextField()
-        type_input = ft.Dropdown()
-        add_cnpj_button = ft.Button()
-        remove_cnpj_button = ft.Button()
-        start_automation_button = ft.Button()
+        codcoligada_input = ft.Dropdown(
+            label="Affiliate",
+            options=[
+                ft.dropdown.Option("5", "Sinasc"),
+                ft.dropdown.Option("6", "ICD"),
+                ft.dropdown.Option("1", "BRS"),
+            ]
+        )
+
+        cnpj_input = ft.TextField(
+            label="Cnpj",
+            on_submit=add_cnpj,
+        )
+
+        ie_input = ft.TextField(
+            label="IE",
+            on_submit=add_cnpj,
+        )
+
+        type_input = ft.Dropdown(
+            label="Type",
+            options=[
+                ft.dropdown.Option("c", "Customer"),
+                ft.dropdown.Option("f", "Vendor"),
+            ]
+        )
+
+        add_cnpj_button = ft.IconButton(
+            icon=ft.Icons.ADD,
+            icon_size=30,
+            tooltip="Add cnpj",
+            on_click=add_cnpj,
+        )
+
+        remove_cnpj_button = ft.IconButton(
+            icon=ft.Icons.DELETE,
+            icon_size=30,
+            tooltip="Remove cnpj",
+            on_click=remove_cnpj,
+        )
+
+        start_automation_button = ft.Button(
+            content="Start automation",
+            height=50,
+            bgcolor=ft.Colors.GREY_900,
+            color=ft.Colors.WHITE,
+            style=ft.ButtonStyle(
+                shape=ft.RoundedRectangleBorder(radius=8)
+            ),
+            on_click=add_cnpj,
+        )
 
         # Layout
         cnpj_form = ft.Row(
