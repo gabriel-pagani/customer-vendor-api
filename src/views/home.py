@@ -26,11 +26,27 @@ class HomeView:
         add_cnpj_button = ft.Button()
         remove_cnpj_button = ft.Button()
         start_automation_button = ft.Button()
-        list_of_cnpjs = ft.TextField()
-        logs = ft.TextField()
 
         # Layout
-        ...
+        cnpj_form = ft.Row(
+            controls=[
+                codcoligada_input,
+                cnpj_input,
+                ie_input,
+                type_input,
+                add_cnpj_button,
+            ]
+        )
+
+        column = ft.Column(
+            controls=[
+                cnpj_form,
+            ]
+        )
+
+        container = ft.Container(
+            content=column,
+        )
 
         self.page.clean()
-        self.page.add(...)
+        self.page.add(container)
