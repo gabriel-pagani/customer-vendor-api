@@ -149,6 +149,8 @@ class HomeView:
             
             len_customers_vendors = len(self.customers_vendors)
             for cnpj, infos in self.customers_vendors.items():
+                add_log(f"Cadastrando o cliente/fornecedor {cnpj[:2]}.{cnpj[2:5]}.{cnpj[5:8]}/{cnpj[8:12]}-{cnpj[12:]}...", "info")
+                
                 try:
                     data = execute_query("""
                         SELECT
@@ -180,8 +182,10 @@ class HomeView:
                         contributor=resp["contributor"]
                     )
 
+                    add_log(f"Sucesso ao cadastrar o cliente/fornecedor {cnpj[:2]}.{cnpj[2:5]}.{cnpj[5:8]}/{cnpj[8:12]}-{cnpj[12:]}! CODCFO: {codcfo}", "success")
+
                 except Exception as e:
-                    print(f"exception: {e}")
+                    add_log(f"Erro ao cadastrar o cliente/fornecedor {cnpj[:2]}.{cnpj[2:5]}.{cnpj[5:8]}/{cnpj[8:12]}-{cnpj[12:]}! ERRO: {e}", "error")
                 
                 if len_customers_vendors > 3:
                     time.sleep(20)
