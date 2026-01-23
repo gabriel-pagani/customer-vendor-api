@@ -189,6 +189,8 @@ class HomeView:
         codcoligada_input = ft.Dropdown(
             label="Coligada",
             width=200,
+            border_color=ft.Colors.GREY_300,
+            focused_border_color=ft.Colors.GREY_300,
             options=[
                 ft.dropdown.Option("5", "Sinasc"),
                 ft.dropdown.Option("6", "ICD"),
@@ -199,6 +201,8 @@ class HomeView:
         cnpj_input = ft.TextField(
             label="Cnpj",
             expand=True,
+            border_color=ft.Colors.GREY_300,
+            focused_border_color=ft.Colors.GREY_300,
             input_filter=ft.NumbersOnlyInputFilter(),
             on_submit=add_cnpj_to_list,
         )
@@ -206,12 +210,16 @@ class HomeView:
         ie_input = ft.TextField(
             label="IE",
             expand=True,
+            border_color=ft.Colors.GREY_300,
+            focused_border_color=ft.Colors.GREY_300,
             on_submit=add_cnpj_to_list,
         )
 
         type_input = ft.Dropdown(
             label="Tipo",
             width=200,
+            border_color=ft.Colors.GREY_300,
+            focused_border_color=ft.Colors.GREY_300,
             options=[
                 ft.dropdown.Option("c", "Cliente"),
                 ft.dropdown.Option("f", "Fornecedor"),
