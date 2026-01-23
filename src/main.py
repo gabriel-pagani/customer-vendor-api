@@ -13,7 +13,7 @@ class Main:
         async def center_window():
             await self.page.window.center()
         
-        self.page.title = 'CustomerVendor Automation'
+        self.page.title = 'Customer Vendor Automation'
         self.page.window.icon = os.path.join(os.path.dirname(__file__), "assets", "icon_windows.ico")
         self.page.run_task(center_window)
         self.page.theme_mode = ft.ThemeMode.LIGHT
