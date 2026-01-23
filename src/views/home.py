@@ -150,7 +150,7 @@ class HomeView:
                     print(f"exception: {e}")
                 
                 if len_customers_vendors > 3:
-                        await time.sleep(20)
+                    time.sleep(20)
 
             codcoligada_input.disabled = False
             cnpj_input.disabled = False
