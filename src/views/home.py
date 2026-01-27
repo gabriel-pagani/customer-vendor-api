@@ -54,7 +54,10 @@ class HomeView:
                 cnpj_input.update()
 
         def on_ie_input_change(e):
-            ...
+            new_value = re.sub(r"[^A-Za-z0-9]", "", ie_input.value or "")
+            if ie_input.value != new_value:
+                ie_input.value = new_value
+                ie_input.update()
 
         def add_cnpj_to_list(e):
             cnpj_input.error = None
