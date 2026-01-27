@@ -67,6 +67,11 @@ class HomeView:
                 has_error = True
 
             ie_value = (ie_input.value or "").strip().lower()
+            if ie_value and ie_value != "isento":
+                if any((cnpj.get("ie") or "").strip().lower() == ie_value for cnpj in self.customers_vendors.values()):
+                    ie_input.error = "Essa inscrição estadual já foi utilizada!"
+                    has_error = True
+
             if ie_value and not (ie_value == "isento" or ie_value.isdigit()):
                 ie_input.error = "Inscrição estadual inválida!"
                 has_error = True
