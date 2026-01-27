@@ -53,6 +53,9 @@ class HomeView:
                 cnpj_input.value = new_value
                 cnpj_input.update()
 
+        def on_ie_input_change(e):
+            ...
+
         def add_cnpj_to_list(e):
             cnpj_input.error = None
             ie_input.error = None
@@ -270,7 +273,7 @@ class HomeView:
             expand=True,
             border_color=ft.Colors.GREY_300,
             focused_border_color=ft.Colors.GREY_300,
-            on_change=...,
+            on_change=on_ie_input_change,
             on_submit=add_cnpj_to_list,
         )
 
