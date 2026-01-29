@@ -154,6 +154,9 @@ class HomeView:
             add_cnpj_button.disabled = True
             add_cnpj_button.icon_color = ft.Colors.GREY_300
             add_cnpj_button.tooltip = "Automação em execução!"
+            import_cnpjs_button.disabled = True
+            import_cnpjs_button.icon_color = ft.Colors.GREY_300
+            import_cnpjs_button.tooltip = "Automação em execução!"
             start_automation_button.disabled = True
             start_automation_button.tooltip = "Automação em execução!"
 
@@ -171,6 +174,9 @@ class HomeView:
             add_cnpj_button.disabled = False
             add_cnpj_button.icon_color = ft.Colors.GREEN
             add_cnpj_button.tooltip = "Adicionar cnpj"
+            import_cnpjs_button.disabled = False
+            import_cnpjs_button.icon_color = ft.Colors.BLUE
+            import_cnpjs_button.tooltip = "Importar lista de cnpjs"
             start_automation_button.disabled = False
             start_automation_button.tooltip = None
 
