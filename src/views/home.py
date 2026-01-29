@@ -119,7 +119,11 @@ class HomeView:
 
         async def import_cnpjs_to_list(e):
             try:
-                file = await ft.FilePicker().pick_files(file_type=ft.FilePickerFileType.CUSTOM, allowed_extensions=["json"], allow_multiple=False)
+                file = await ft.FilePicker().pick_files(
+                    file_type=ft.FilePickerFileType.CUSTOM, 
+                    allowed_extensions=["json"], 
+                    allow_multiple=False
+                )
                 
                 with open(file[0].path, "r", encoding="utf-8") as f:
                     cnpjs_list = json.load(f)
