@@ -116,6 +116,9 @@ class HomeView:
             update_list_of_cnpjs()
             show_message(self.page, 1, "Cnpj adicionado com sucesso!")
 
+        def import_cnpjs_to_list(e):
+            ...
+
         def remove_cnpj_from_list(cnpj):
             if cnpj in self.customers_vendors:
                 del self.customers_vendors[cnpj]
@@ -317,7 +320,7 @@ class HomeView:
             icon_color=ft.Colors.BLUE,
             icon_size=40,
             tooltip="Importar lista de cnpjs",
-            on_click=...,
+            on_click=import_cnpjs_to_list,
         )
 
         start_automation_button = ft.Button(
